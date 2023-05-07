@@ -1,0 +1,88 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>Layoff Risk Predictor</h1>
+        <p>Enter the information below to see your company's risk category for being laid off.</p>
+
+        <!--
+We have these columns to capture:
+['funds_raised', 'industry_Aerospace', 'industry_Construction',
+       'industry_Consumer', 'industry_Crypto', 'industry_Data',
+       'industry_Education', 'industry_Energy', 'industry_Finance',
+       'industry_Fitness', 'industry_Food', 'industry_HR', 'industry_Hardware',
+       'industry_Healthcare', 'industry_Infrastructure', 'industry_Legal',
+       'industry_Logistics', 'industry_Manufacturing', 'industry_Marketing',
+       'industry_Media', 'industry_Other', 'industry_Product',
+       'industry_Real Estate', 'industry_Recruiting', 'industry_Retail',
+       'industry_Sales', 'industry_Security', 'industry_Support',
+       'industry_Transportation', 'industry_Travel', 'stage_Acquired',
+       'stage_Post-IPO', 'stage_Private Equity', 'stage_Seed',
+       'stage_Series A', 'stage_Series B', 'stage_Series C', 'stage_Series D',
+       'stage_Series E', 'stage_Series F', 'stage_Series G', 'stage_Series H',
+       'stage_Series I', 'stage_Series J', 'stage_Subsidiary',
+       'stage_Unknown']
+        -->
+        
+        <form action=/predict method=POST>
+            <label for="funds_raised">Funds Raised:</label><br>
+            <input type="text" id="funds_raised" name="funds_raised"><br>
+            <label for="industry">Industry:</label><br>
+            <select name="industry" id="industry">
+                <option value="Aerospace">Aerospace</option>
+                <option value="Construction">Construction</option>
+                <option value="Consumer">Consumer</option>
+                <option value="Crypto">Crypto</option>
+                <option value="Data">Data</option>
+                <option value="Education">Education</option>
+                <option value="Energy">Energy</option>
+                <option value="Finance">Finance</option>
+                <option value="Fitness">Fitness</option>
+                <option value="Food">Food</option>
+                <option value="HR">HR</option>
+                <option value="Hardware">Hardware</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Infrastructure">Infrastructure</option>
+                <option value="Legal">Legal</option>
+                <option value="Logistics">Logistics</option>
+                <option value="Manufacturing">Manufacturing</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Media">Media</option>
+                <option value="Product">Product</option>
+                <option value="Real Estate">Real Estate</option>
+                <option value="Recruiting">Recruiting</option>
+                <option value="Retail">Retail</option>
+                <option value="Sales">Sales</option>
+                <option value="Security">Security</option>
+                <option value="Support">Support</option>
+                <option value="Transportation">Transportation</option>
+                <option value="Travel">Travel</option>
+                <option value="Other">Other</option>
+            </select><br>
+            <label for="stage">Stage:</label><br>
+            <select name="stage" id="stage">
+                <option value="Acquired">Acquired</option>
+                <option value="Post-IPO">Post-IPO</option>
+                <option value="Private Equity">Private Equity</option>
+                <option value="Seed">Seed</option>
+                <option value="Series A">Series A</option>
+                <option value="Series B">Series B</option>
+                <option value="Series C">Series C</option>
+                <option value="Series D">Series D</option>
+                <option value="Series E">Series E</option>
+                <option value="Series F">Series F</option>
+                <option value="Series G">Series G</option>
+                <option value="Series H">Series H</option>
+                <option value="Series I">Series I</option>
+                <option value="Series J">Series J</option>
+                <option value="Subsidiary">Subsidiary</option>
+                <option value="Unknown">Unknown</option>
+            </select><br>
+            <input type="submit" value="Submit">
+        </form>
+
+        {% if prediction %}
+            <p>Based on the information you entered, your company is in the {{ prediction }} category for being laid off.</p>
+        {% endif %}
+    </body>
+</html>
